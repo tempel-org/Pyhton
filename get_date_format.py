@@ -1,46 +1,48 @@
-def obt_formato_fecha(fecha_str):
+from datetime import datetime
+
+def get_date_format(date_str):
     '''Devuelve el formato de una fecha tipo ``str`` si cumple con algun formato sino devuelve ``False``.\\
     Return: ``str`` o ``False``\\
     Params:\\
     fecha_str ``str`` fecha en formato string'''
 
-    if type(fecha_str) is str:
-        fecha = fecha_str.split()[0]
-        fecha = fecha[0:10]
+    if type(date_str) is str:
+        date1 = date_str.split()[0]
+        date1 = date1[0:10]
         try:
-            fecha = (datetime.strptime(fecha, '%Y/%m/%d'))
+            date1 = (datetime.strptime(date1, '%Y/%m/%d'))
             date_format = '%Y/%m/%d'
         except ValueError:
             try:
-                fecha = (datetime.strptime(fecha, '%d/%m/%Y'))
+                date1 = (datetime.strptime(date1, '%d/%m/%Y'))
                 date_format = '%d/%m/%Y'
             except ValueError:
                 try:
-                    fecha = (datetime.strptime(fecha, '%m/%d/%Y'))
+                    date1 = (datetime.strptime(date1, '%m/%d/%Y'))
                     date_format = '%m/%d/%Y'
                 except ValueError:
                     try:
-                        fecha = (datetime.strptime(fecha, '%Y-%m-%d'))
+                        date1 = (datetime.strptime(date1, '%Y-%m-%d'))
                         date_format = '%Y-%m-%d'
                     except ValueError:
                         try:
-                            fecha = (datetime.strptime(fecha, '%d-%m-%Y'))
+                            date1 = (datetime.strptime(date1, '%d-%m-%Y'))
                             date_format = '%d-%m-%Y'
                         except ValueError:
                             try:
-                                fecha = (datetime.strptime(fecha, '%m-%d-%Y'))
+                                date1 = (datetime.strptime(date1, '%m-%d-%Y'))
                                 date_format = '%m-%d-%Y'
                             except ValueError:
                                 try:
-                                    fecha = (datetime.strptime(fecha, '%Y%m%d'))
+                                    date1 = (datetime.strptime(date1, '%Y%m%d'))
                                     date_format = '%Y%m%d'
                                 except ValueError:
                                     try:
-                                        fecha = (datetime.strptime(fecha, '%d%m%Y'))
+                                        date1 = (datetime.strptime(date1, '%d%m%Y'))
                                         date_format = '%d%m%Y'
                                     except ValueError:
                                         try:
-                                            fecha = (datetime.strptime(fecha, '%m%d%Y'))
+                                            date1 = (datetime.strptime(date1, '%m%d%Y'))
                                             date_format = '%m%d%Y'
                                         except ValueError:
                                             return False
